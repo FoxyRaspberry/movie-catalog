@@ -1,5 +1,11 @@
-<ol>
+<ul class="app-list">
   @for (movie of list(); track movie.id) {
-    <li>{{movie.title}}</li>
+    <li>
+      <app-movies-list-item
+        [imageURL]="movie.imageURL"
+        [releaseYear]="movie.releaseYear"
+        [title]="movie.title"
+      />
+    </li>
   }
-</ol>
+</ul>
