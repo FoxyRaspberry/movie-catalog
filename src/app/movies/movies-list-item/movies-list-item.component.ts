@@ -1,6 +1,7 @@
-import { Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-movies-list-item',
   standalone: true,
   templateUrl: './movies-list-item.component.html',

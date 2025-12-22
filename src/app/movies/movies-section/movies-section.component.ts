@@ -1,10 +1,11 @@
-import { Component, DestroyRef, inject, signal, type OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, signal, type OnInit } from '@angular/core';
 import { MoviesService } from '../movies.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import type { Movies } from '../movies.type';
 import { MoviesListComponent } from "../movies-list/movies-list.component";
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-movies-section',
   standalone: true,
   imports: [MoviesListComponent],
