@@ -1,11 +1,13 @@
-import { Component, DestroyRef, inject, type OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, signal, type OnInit } from '@angular/core';
 import { MoviesService } from '../movies.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import type { Movies } from '../movies.type';
+import { MoviesListComponent } from "../movies-list/movies-list.component";
 
 @Component({
   selector: 'app-movies-section',
   standalone: true,
-  imports: [],
+  imports: [MoviesListComponent],
   templateUrl: './movies-section.component.html',
   styleUrl: './movies-section.component.css',
 })
@@ -13,11 +15,14 @@ export class MoviesSectionComponent implements OnInit {
   readonly #destroyRef = inject(DestroyRef)
   readonly #moviesService = inject(MoviesService)
 
+  protected readonly movies = signal<Movies>([])
+
   public ngOnInit(): void {
     this.#moviesService.getList()
       .pipe(takeUntilDestroyed(this.#destroyRef))
-      .subscribe((movies): void => {
+      .subscribe((movies: Movies): void => {
         console.table(movies)
+        this.movies.set(movies);
       })
   }
 }
