@@ -1,0 +1,12 @@
+<article>
+  <img [alt]="title()" [src]="imageURL()">
+  <h2>{{title()}}</h2>
+  <p>{{releaseYear()}}</p>
+  <p>{{description()}}</p>
+  <ul>
+    @for (genre of genres(); track genre) {
+      <li>{{genre}}</li>
+    }
+  </ul>
+  <p>{{rating()}}</p>
+</article>
