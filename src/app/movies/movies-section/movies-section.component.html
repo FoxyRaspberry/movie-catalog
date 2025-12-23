@@ -5,4 +5,8 @@
   [(ngModel)]="searchValue"
   (ngModelChange)="searchModelChangeHandler($event)"
 >
-<app-movies-list [list]="movies()" />
+@if (listIsShown()) {
+  <app-movies-list [list]="movies()" />
+} @else {
+  <p>{{listIsEmptyText}}</p>
+}

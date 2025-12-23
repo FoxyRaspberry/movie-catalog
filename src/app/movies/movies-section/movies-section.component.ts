@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, inject, signal, type OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, signal, type OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { first } from 'rxjs';
@@ -23,7 +23,9 @@ export class MoviesSectionComponent implements OnInit {
 
   protected readonly movies = signal<Movies>([]);
 
-  protected searchPlaceholder = 'Search';
+  protected readonly listIsEmptyText = 'No results found for your request.';
+  protected readonly listIsShown = computed<boolean>(() => !!this.movies().length);
+  protected readonly searchPlaceholder = 'Search';
   protected searchValue = '';
 
   public ngOnInit(): void {

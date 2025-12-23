@@ -2,6 +2,10 @@
   display: block;
 }
 
+.app-search {
+  display: block;
+}
+
 .app-title {
   margin-block: 0;
 }
