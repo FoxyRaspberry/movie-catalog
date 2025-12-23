@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   selector: 'app-movies-list-item',
   standalone: true,
   templateUrl: './movies-list-item.component.html',
-  styleUrl: './movies-list-item.component.css'
+  styleUrl: './movies-list-item.component.css',
 })
 export class MoviesListItemComponent {
   public readonly imageURL = input.required<string>();

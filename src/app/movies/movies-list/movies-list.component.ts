@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { Movies } from '../movies.type';
-import { MoviesListItemComponent } from "../movies-list-item/movies-list-item.component";
+import { MoviesListItemComponent } from '../movies-list-item/movies-list-item.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, signa
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { first } from 'rxjs';
-import { MoviesListComponent } from "../movies-list/movies-list.component";
+import { MoviesListComponent } from '../movies-list/movies-list.component';
 import { MoviesService } from '../movies.service';
 import type { Movies } from '../movies.type';
 
