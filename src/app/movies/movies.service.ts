@@ -8,6 +8,15 @@ import type { Movie, Movies } from './movies.type';
 export class MoviesService {
   constructor() {}
 
+  public getItem(movieID: number): Observable<Movie> {
+    const movie = movies.find(({ id }: Movie): boolean => movieID === id);
+    if (!movie) {
+      throw new Error(`Movie with ID = ${movieID} does not exist.`);
+    }
+
+    return of(movie).pipe(delay(500));
+  }
+
   public getList(titleFilter: string): Observable<Movies> {
     const titleFilterPrepared = titleFilter.toLocaleLowerCase();
     const result = movies.filter((movie: Movie): boolean => {

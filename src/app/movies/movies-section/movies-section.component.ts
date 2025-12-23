@@ -4,7 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { first } from 'rxjs';
 import { MoviesListComponent } from '../movies-list/movies-list.component';
 import { MoviesService } from '../movies.service';
-import type { Movies } from '../movies.type';
+import type { Movie, Movies } from '../movies.type';
+import { PopupComponent } from "../popup/popup.component";
+import { MovieDetailsComponent } from '../movie-details/movie-details.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -12,8 +14,10 @@ import type { Movies } from '../movies.type';
   standalone: true,
   imports: [
     FormsModule,
+    MovieDetailsComponent,
     MoviesListComponent,
-  ],
+    PopupComponent,
+],
   templateUrl: './movies-section.component.html',
   styleUrl: './movies-section.component.css',
 })
@@ -21,10 +25,20 @@ export class MoviesSectionComponent implements OnInit {
   readonly #destroyRef = inject(DestroyRef);
   readonly #moviesService = inject(MoviesService);
 
+  protected readonly movieDetails = signal<Movie>({
+    description: 'No data.',
+    genres: [],
+    id: 0,
+    imageURL: 'NoData',
+    rating: 0,
+    releaseYear: 'NoData',
+    title: 'No data',
+  });
   protected readonly movies = signal<Movies>([]);
 
   protected readonly listIsEmptyText = 'No results found for your request.';
   protected readonly listIsShown = computed<boolean>(() => !!this.movies().length);
+  protected readonly popupIsShown = signal(false);
   protected readonly searchPlaceholder = 'Search';
   protected searchValue = '';
 
@@ -34,6 +48,19 @@ export class MoviesSectionComponent implements OnInit {
       .subscribe((movies: Movies): void => {
         this.movies.set(movies);
       });
+  }
+
+  protected listItemClickedHandler(movieID: number): void {
+    this.#moviesService.getItem(movieID)
+      .pipe(takeUntilDestroyed(this.#destroyRef))
+      .subscribe((movieDetails: Movie): void => {
+        this.movieDetails.set(movieDetails);
+        this.popupIsShown.set(true);
+      });
+  }
+
+  protected popupCloseButtonClickHandler(): void {
+    this.popupIsShown.set(false);
   }
 
   protected searchModelChangeHandler(searchValue: string): void {

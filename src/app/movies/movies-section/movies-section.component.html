@@ -4,9 +4,27 @@
   [(ngModel)]="searchValue"
   [attr.placeholder]="searchPlaceholder"
   (ngModelChange)="searchModelChangeHandler($event)"
+  name="search"
 >
 @if (listIsShown()) {
-  <app-movies-list [list]="movies()" />
+  <app-movies-list
+    [list]="movies()"
+    (itemClicked)="listItemClickedHandler($event)"
+  />
 } @else {
   <p>{{listIsEmptyText}}</p>
+}
+@if (popupIsShown()) {
+  <app-popup
+    (closeButtonClick)="popupCloseButtonClickHandler()"
+  >
+    <app-movie-details
+      [description]="movieDetails().description"
+      [genres]="movieDetails().genres"
+      [imageURL]="movieDetails().imageURL"
+      [rating]="movieDetails().rating"
+      [releaseYear]="movieDetails().releaseYear"
+      [title]="movieDetails().title"
+    />
+  </app-popup>
 }
