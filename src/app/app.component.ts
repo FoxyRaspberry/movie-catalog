@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { MoviesSectionComponent } from "./movies/movies-section/movies-section.component";
+import { MoviesSectionComponent } from './movies/movies-section/movies-section.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -7,6 +7,6 @@ import { MoviesSectionComponent } from "./movies/movies-section/movies-section.c
   standalone: true,
   imports: [MoviesSectionComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent { }

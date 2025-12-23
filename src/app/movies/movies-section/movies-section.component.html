@@ -1,2 +1,12 @@
 <h1 class="app-title">Movie catalog</h1>
-<app-movies-list [list]="movies()" />
+<input
+  class="app-search"
+  [(ngModel)]="searchValue"
+  [attr.placeholder]="searchPlaceholder"
+  (ngModelChange)="searchModelChangeHandler($event)"
+>
+@if (listIsShown()) {
+  <app-movies-list [list]="movies()" />
+} @else {
+  <p>{{listIsEmptyText}}</p>
+}
