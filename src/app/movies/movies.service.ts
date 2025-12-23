@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
 import { delay, of, type Observable } from 'rxjs';
-import type { Movies } from './movies.type';
+import type { Movie, Movies } from './movies.type';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MoviesService {
   constructor() {}
 
-  public getList(): Observable<Movies> {
-    return of(movies).pipe(delay(500));
+  public getList(titleFilter: string): Observable<Movies> {
+    const titleFilterPrepared = titleFilter.toLocaleLowerCase();
+    const result = movies.filter((movie: Movie): boolean => {
+      return movie.title.toLocaleLowerCase().includes(titleFilterPrepared);
+    });
+
+    return of(result).pipe(delay(500));
   }
 }
 

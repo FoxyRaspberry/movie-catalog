@@ -1,2 +1,8 @@
 <h1 class="app-title">Movie catalog</h1>
+<input
+  class="app-search"
+  [attr.placeholder]="searchPlaceholder"
+  [(ngModel)]="searchValue"
+  (ngModelChange)="searchModelChangeHandler($event)"
+>
 <app-movies-list [list]="movies()" />
