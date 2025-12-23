@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { Movies } from '../movies.type';
 import { MoviesListItemComponent } from '../movies-list-item/movies-list-item.component';
 
@@ -12,4 +12,9 @@ import { MoviesListItemComponent } from '../movies-list-item/movies-list-item.co
 })
 export class MoviesListComponent {
   public readonly list = input.required<Movies>();
+  public readonly itemClicked = output<number>();
+
+  protected itemClickHandler(movieID: number): void {
+    this.itemClicked.emit(movieID)
+  }
 }

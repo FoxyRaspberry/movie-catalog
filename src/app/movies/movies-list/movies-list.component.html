@@ -1,6 +1,6 @@
 <ul class="app-list">
   @for (movie of list(); track movie.id) {
-    <li>
+    <li (click)="itemClickHandler(movie.id)">
       <app-movies-list-item
         [imageURL]="movie.imageURL"
         [releaseYear]="movie.releaseYear"
