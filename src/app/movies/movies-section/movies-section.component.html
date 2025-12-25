@@ -1,30 +1,32 @@
-<h1 class="app-title">Movie catalog</h1>
-<input
-  class="app-search"
-  [(ngModel)]="searchValue"
-  [attr.placeholder]="searchPlaceholder"
-  (ngModelChange)="searchModelChangeHandler($event)"
-  name="search"
->
-@if (listIsShown()) {
-  <app-movies-list
-    [list]="movies()"
-    (itemClicked)="listItemClickedHandler($event)"
-  />
-} @else {
-  <p>{{listIsEmptyText}}</p>
-}
-@if (popupIsShown()) {
-  <app-popup
-    (closeButtonClick)="popupCloseButtonClickHandler()"
+<div class="app-wrapper">
+  <h1 class="app-title">Movie catalog</h1>
+  <input
+    class="app-search"
+    [(ngModel)]="searchValue"
+    [attr.placeholder]="searchPlaceholder"
+    (ngModelChange)="searchModelChangeHandler($event)"
+    name="search"
   >
-    <app-movie-details
-      [description]="movieDetails().description"
-      [genres]="movieDetails().genres"
-      [imageURL]="movieDetails().imageURL"
-      [rating]="movieDetails().rating"
-      [releaseYear]="movieDetails().releaseYear"
-      [title]="movieDetails().title"
+  @if (listIsShown()) {
+    <app-movies-list
+      [list]="movies()"
+      (itemClicked)="listItemClickedHandler($event)"
     />
-  </app-popup>
-}
+  } @else {
+    <p>{{listIsEmptyText}}</p>
+  }
+  @if (popupIsShown()) {
+    <app-popup
+      (closeButtonClick)="popupCloseButtonClickHandler()"
+    >
+      <app-movie-details
+        [description]="movieDetails().description"
+        [genres]="movieDetails().genres"
+        [imageURL]="movieDetails().imageURL"
+        [rating]="movieDetails().rating"
+        [releaseYear]="movieDetails().releaseYear"
+        [title]="movieDetails().title"
+      />
+    </app-popup>
+  }
+</div>
