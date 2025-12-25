@@ -1,0 +1,8 @@
+:host {
+  display: block;
+}
+
+.app-grid {
+  display: grid;
+  grid-template-columns: 1fr 40px;
+}
