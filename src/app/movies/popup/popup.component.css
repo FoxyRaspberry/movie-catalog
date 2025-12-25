@@ -5,4 +5,47 @@
 .app-grid {
   display: grid;
   grid-template-columns: 1fr 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh; 
+  place-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+.app-content {
+  background: #001719c2;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 90%;
+  animation: slide-in 0.3s ease;
+}
+
+.app-close-button-container {
+  position: fixed;
+  top: 10px;
+  right: 15px;
+}
+
+.app-close-button {
+  cursor: pointer;
+  font-size: 24px;
+  color: var(---secondary-color);
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
