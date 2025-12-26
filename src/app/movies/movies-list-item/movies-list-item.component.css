@@ -9,10 +9,16 @@
   justify-content: space-between;
   gap: 15px;
   margin: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.app-card:hover {
+  transform: scale(1.05);
 }
 
 .app-image {
   width: 150px;
+  height: auto;
 }
 
 .app-title,
