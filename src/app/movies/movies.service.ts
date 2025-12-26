@@ -101,15 +101,6 @@ const movies: Movies = [
     title: 'Avengers: Endgame',
   },
   {
-    description: 'Teenager Hiccup is not very close to the traditions of his heroic tribe, which has been waging war against dragons for many years.',
-    genres: ['Fantasy', 'Adventure', 'Drama'],
-    id: 9,
-    imageURL: 'dragon.webp',
-    rating: 7.8,
-    releaseYear: '2025',
-    title: 'How to Train Your Dragon',
-  },
-  {
     description: 'The battle between the good and evil forces of the wizarding world escalates into an all-out war.',
     genres: ['Fantasy', 'Adventure'],
     id: 10,
