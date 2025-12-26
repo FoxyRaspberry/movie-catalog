@@ -11,6 +11,10 @@
   margin: 0;
 }
 
+.app-image {
+  width: 150px;
+}
+
 .app-title,
 .app-description {
   margin-block: 0;

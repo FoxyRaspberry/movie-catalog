@@ -1,11 +1,21 @@
 :host {
   display: block;
+  margin-block: 0;
+}
+
+.app-image {
+  width: 150px;
+}
+
+.app-release-year {
+  margin-block: 5px;
 }
 
 .app-list-genre {
-  margin: 0;
+  margin-block: 5px;
   padding: 0;
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
@@ -15,4 +25,13 @@
   background-color: #0289958c;
   backdrop-filter: blur(10px);
   border-radius: 5px;
+}
+
+.app-description {
+  margin-block: 5px;
+  font-size: 13px;
+}
+
+.app-rating {
+  margin-block: 5px;
 }

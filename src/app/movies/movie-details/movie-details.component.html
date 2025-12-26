@@ -1,12 +1,12 @@
 <article>
-  <img [alt]="title()" [src]="imageURL()">
+  <img class="app-image" [alt]="title()" [src]="imageURL()">
   <h2>{{title()}}</h2>
-  <p>{{releaseYear()}}</p>
+  <p class="app-release-year">{{releaseYear()}}</p>
   <ul class="app-list-genre">
     @for (genre of genres(); track genre) {
       <li class="app-genre">{{genre}}</li>
     }
   </ul>
-  <p>{{description()}}</p>
-  <p>{{rating()}}</p>
+  <p class="app-description">{{description()}}</p>
+  <p class="app-rating">{{rating()}}</p>
 </article>
