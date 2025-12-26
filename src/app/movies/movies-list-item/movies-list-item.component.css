@@ -1,3 +1,32 @@
 :host {
   display: block;
+  margin-block: 0;
+}
+
+.app-card {
+  display: grid;
+  justify-items: start;
+  justify-content: space-between;
+  gap: 15px;
+  margin: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.app-card:hover {
+  transform: scale(1.05);
+}
+
+.app-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.app-title,
+.app-description {
+  margin-block: 0;
+}
+
+.app-title {
+  text-shadow: 0 0 5px #fff, 0 0 10px #00838f, 0 0 15px #00626b, 0 0 20px #007882, 0 0 30px #054a50;
 }
